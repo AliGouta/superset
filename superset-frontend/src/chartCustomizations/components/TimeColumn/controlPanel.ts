@@ -22,7 +22,7 @@ import { t } from '@apache-superset/core/translation';
 const config: ControlPanelConfig = {
   controlPanelSections: [
     {
-      label: t('UI Configuration'),
+      label: () => t('UI Configuration'),
       expanded: true,
       controlSetRows: [
         [
@@ -30,12 +30,11 @@ const config: ControlPanelConfig = {
             name: 'enableEmptyFilter',
             config: {
               type: 'CheckboxControl',
-              label: t('Filter value is required'),
+              label: () => t('Filter value is required'),
               default: false,
               renderTrigger: true,
-              description: t(
-                'User must select a value before applying the filter',
-              ),
+              description: () =>
+                t('User must select a value before applying the filter'),
             },
           },
         ],

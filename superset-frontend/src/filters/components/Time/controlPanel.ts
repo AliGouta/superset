@@ -26,7 +26,7 @@ const config: ControlPanelConfig = {
   // For control input types, see: superset-frontend/src/explore/components/controls/index.js
   controlPanelSections: [
     {
-      label: t('Query'),
+      label: () => t('Query'),
       expanded: true,
       controlSetRows: [
         [
@@ -42,7 +42,7 @@ const config: ControlPanelConfig = {
       ],
     },
     {
-      label: t('UI Configuration'),
+      label: () => t('UI Configuration'),
       expanded: true,
       controlSetRows: [
         [
@@ -50,12 +50,11 @@ const config: ControlPanelConfig = {
             name: 'enableEmptyFilter',
             config: {
               type: 'CheckboxControl',
-              label: t('Filter value is required'),
+              label: () => t('Filter value is required'),
               default: false,
               renderTrigger: true,
-              description: t(
-                'User must select a value before applying the filter',
-              ),
+              description: () =>
+                t('User must select a value before applying the filter'),
             },
           },
         ],

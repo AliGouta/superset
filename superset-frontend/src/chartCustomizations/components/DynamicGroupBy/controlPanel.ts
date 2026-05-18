@@ -22,7 +22,7 @@ import { t } from '@apache-superset/core/translation';
 const config: ControlPanelConfig = {
   controlPanelSections: [
     {
-      label: t('Query'),
+      label: () => t('Query'),
       expanded: true,
       controlSetRows: [
         [
@@ -41,7 +41,7 @@ const config: ControlPanelConfig = {
       ],
     },
     {
-      label: t('UI Configuration'),
+      label: () => t('UI Configuration'),
       expanded: true,
       controlSetRows: [
         [
@@ -49,12 +49,12 @@ const config: ControlPanelConfig = {
             name: 'canSelectMultiple',
             config: {
               type: 'CheckboxControl',
-              label: t('Can select multiple values'),
+              label: () => t('Can select multiple values'),
               default: true,
               renderTrigger: true,
               resetConfig: true,
               affectsDataMask: true,
-              description: t('Allow users to select multiple values'),
+              description: () => t('Allow users to select multiple values'),
             },
           },
         ],
@@ -63,12 +63,11 @@ const config: ControlPanelConfig = {
             name: 'enableEmptyFilter',
             config: {
               type: 'CheckboxControl',
-              label: t('Chart customization value is required'),
+              label: () => t('Chart customization value is required'),
               default: false,
               renderTrigger: true,
-              description: t(
-                'User must select a value before applying the chart customization',
-              ),
+              description: () =>
+                t('User must select a value before applying the chart customization'),
             },
           },
         ],

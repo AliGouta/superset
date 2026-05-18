@@ -224,9 +224,7 @@ export default function getControlItemsMap({
                 <>
                   {typeof controlItem.config.label === 'function'
                     ? (controlItem.config.label as Function)()
-                    : typeof controlItem.config.label === 'string'
-                      ? t(controlItem.config.label)
-                      : controlItem.config.label}
+                    : controlItem.config.label}
                   &nbsp;
                   {controlItem.config.description && (
                     <InfoTooltip
@@ -234,9 +232,7 @@ export default function getControlItemsMap({
                       tooltip={
                         typeof controlItem.config.description === 'function'
                           ? (controlItem.config.description as Function)()
-                          : typeof controlItem.config.description === 'string'
-                            ? t(controlItem.config.description)
-                            : (controlItem.config.description as React.ReactNode)
+                          : (controlItem.config.description as React.ReactNode)
                       }
                     />
                   )}

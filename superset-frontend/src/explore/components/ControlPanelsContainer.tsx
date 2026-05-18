@@ -521,16 +521,12 @@ export const ControlPanelsContainer = (props: ControlPanelsContainerProps) => {
     const label =
       typeof baseLabel === 'function'
         ? baseLabel(exploreState, controls[name], chart)
-        : typeof baseLabel === 'string'
-          ? t(baseLabel)
-          : baseLabel;
+        : baseLabel;
 
     const description =
       typeof baseDescription === 'function'
         ? baseDescription(exploreState, controls[name], chart)
-        : typeof baseDescription === 'string'
-          ? t(baseDescription)
-          : baseDescription;
+        : baseDescription;
 
     if (name.includes('adhoc_filters')) {
       restProps.canDelete = (
@@ -634,12 +630,16 @@ export const ControlPanelsContainer = (props: ControlPanelsContainerProps) => {
             line-height: 1.3;
           `}
         >
-          {typeof label === 'string' ? t(label) : label}
+          {typeof label === 'function' ? (label as () => ReactNode)() : label}
         </span>{' '}
         {description && (
           <Tooltip
             id={sectionId}
-            title={typeof description === 'string' ? t(description) : description}
+            title={
+              typeof description === 'function'
+                ? (description as () => ReactNode)()
+                : description
+            }
           >
             <Icons.InfoCircleOutlined css={iconStyles} />
           </Tooltip>

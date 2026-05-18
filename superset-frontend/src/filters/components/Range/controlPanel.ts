@@ -26,7 +26,7 @@ import { SingleValueType } from './SingleValueType';
 const config: ControlPanelConfig = {
   controlPanelSections: [
     {
-      label: t('Query'),
+      label: () => t('Query'),
       expanded: true,
       controlSetRows: [
         [
@@ -42,7 +42,7 @@ const config: ControlPanelConfig = {
       ],
     },
     {
-      label: t('UI Configuration'),
+      label: () => t('UI Configuration'),
       expanded: true,
       controlSetRows: [
         [
@@ -50,22 +50,21 @@ const config: ControlPanelConfig = {
             name: 'enableEmptyFilter',
             config: {
               type: 'CheckboxControl',
-              label: t('Filter value is required'),
+              label: () => t('Filter value is required'),
               default: false,
               renderTrigger: true,
-              description: t(
-                'User must select a value before applying the filter',
-              ),
+              description: () =>
+                t('User must select a value before applying the filter'),
             },
           },
           {
             name: 'enableSingleValue',
             config: {
               type: 'CheckboxControl',
-              label: t('Single value'),
+              label: () => t('Single value'),
               default: SingleValueType.Exact,
               renderTrigger: true,
-              description: t('Use only a single value.'),
+              description: () => t('Use only a single value.'),
             },
           },
         ],
